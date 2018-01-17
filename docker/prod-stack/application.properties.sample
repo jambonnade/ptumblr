@@ -1,0 +1,6 @@
+# If you use a reverse proxy
+#app.baseUrl=http://ptumblr.local/
+
+tumblr.api.consumerKey=yourkey
+tumblr.api.consumerSecret=yourkeysecret
+

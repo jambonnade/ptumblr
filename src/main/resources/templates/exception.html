@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="page-fragments :: head(null)"></head>
+    <body>
+        <div th:replace="page-fragments :: header('ex')"></div>
+        <div class="container" role="main" th:with="zz='kikoo'">
+            <p th:utext="#{web.exception.message(${exceptionId}, '')}">(message)</p>
+        </div>
+        <div th:replace="page-fragments :: footer"></div>
+    </body>
+</html>

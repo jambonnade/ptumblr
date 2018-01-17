@@ -1,0 +1,48 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:5.7
+    deploy:
+      mode: global
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-var:/var/lib/mysql
+      - ./mysql/conf.d/conf.cnf:/etc/mysql/conf.d/conf.cnf
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
+    networks:
+      default:
+        aliases:
+          - mysql-db-host
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+
+  ptumblr:
+    image: openjdk:8-alpine
+    deploy:
+      mode: global
+    ports:
+      - 8080:8080
+    volumes:
+      - ../../target/ptumblr-1.0.1-mysql.jar:/opt/ptumblr.jar
+      - ./application.properties:/opt/application.properties
+      - ./ptumblr-var:/var/local/ptumblr
+    working_dir: /opt
+    command: ["java", "-jar", "ptumblr.jar"]
+    environment:
+      # Predefined configurations to active as a base
+      - SPRING_PROFILES_ACTIVE=mysql
+    networks:
+      default:
+        aliases:
+          - ptumblr-host
+
+#  nginx:
+#    image: nginx:1.12-alpine
+#    deploy:
+#      mode: global
+#    ports:
+#      - 80:80
+#    volumes:
+#      - ./nginx/conf.d:/etc/nginx/conf.d
+

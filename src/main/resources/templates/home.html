@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="page-fragments :: head(null)"></head>
+    <body>
+        <div th:replace="page-fragments :: header('home')"></div>
+        <div class="container" role="main">
+            <div th:replace="page-fragments :: alerts">(alerts)</div>
+
+            <p th:text="#{web.home.welcome}">(welcome)</p>
+        </div>
+        <div th:replace="page-fragments :: footer"></div>
+    </body>
+</html>

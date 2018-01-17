@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head(title)">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!--<link rel="icon" href="../../favicon.ico">-->
+
+        <title th:if="${title}" th:text="#{web.basePageTitleWith(${title})}">(title)</title>
+        <title th:unless="${title}" th:text="#{web.basePageTitle}">(base title)</title>
+
+        <!-- Bootstrap core CSS -->
+        <link th:href="${@urls.getBaseUrl()} + 'css/bootstrap.min.css'" rel="stylesheet" />
+        <!-- Bootstrap theme -->
+        <link th:href="${@urls.baseUrl} + 'css/bootstrap-theme.min.css'" rel="stylesheet" />
+        
+        <link th:href="${@urls.baseUrl} + 'css/magnific-popup.css'" rel="stylesheet" />
+        
+        <link th:href="${@urls.baseUrl} + 'css/ptumblr.css'" rel="stylesheet" />
+    </head>
+
+    <body>
+        <header class="the-header" th:fragment="header(activePage)">
+            <!-- Fixed navbar -->
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only" th:text="#{web.nav.toggle}">(toggle navigation)</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" th:href="${@urls.baseUrl}" th:text="#{web.nav.title}">(nav title)</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li th:class="${activePage} == 'home' ? 'active'"><a th:href="${@urls.baseUrl}" th:text="#{web.nav.home}">(home)</a></li>
+                            <li th:class="${activePage} == 'dashboard' ? 'active'" th:if="${user} and ${user.username}"><a th:href="${@urls.getDashboardUrl()}" th:text="#{web.nav.dashboard}">(dashboard)</a></li>
+                            <li th:unless="${user} and ${user.username}"><a th:href="${@urls.getOAuthConnectUrl()}" th:text="#{web.nav.connect}">(connect)</a></li>
+                            <li class="dropdown" th:if="${user} and ${user.username}">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" th:text="${user.username}">(user) <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a th:href="${@urls.getDisconnectUrl()}" th:text="#{web.nav.user.disconnect}">(disconnect)</a></li>
+                                </ul>
+                            </li>
+                            <li th:class="${activePage} == 'apiinfo' ? 'active'"><a th:href="${@urls.getApiInfoUrl()}" th:text="#{web.nav.apiInfo}">(api info)</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </nav>
+            
+            
+        </header>
+        
+        <div th:fragment="alerts" th:with="justLoggedIn=${userSession.consumeJustLoggedIn()},justLoggedBack=${userSession.consumeJustLoggedBack()}">
+            <div class="alert alert-success" role="alert" th:if="${justLoggedIn} and not ${justLoggedBack}" th:utext="#{web.alert.welcomeUser(${user.username})}">(welcome user)</div>
+            <div class="alert alert-success" role="alert" th:if="${justLoggedBack}" th:utext="#{web.alert.welcomeBackUser(${user.username})}">(welcome back user)</div>
+            <div class="alert alert-success" role="alert" th:if="${userSession.consumeJustLikedPostId()}" th:text="#{web.alert.justLikedPost}">(like successful)</div>
+            <div class="alert alert-success" role="alert" th:if="${userSession.consumeJustRebloggedPostId()}" th:text="#{web.alert.justRebloggedPost}">(reblog successful)</div>
+            
+            <div class="alert alert-warning" role="alert" th:unless="${canUseApi}" th:utext="#{web.alert.apiLimitReached(${#strings.escapeXml(@urls.getApiInfoUrl())})}">(limit reached alert)</div>
+        </div>
+        
+        <div th:fragment="footer">
+            <script th:src="${@urls.baseUrl} + 'js/jquery-3.2.1.min.js'"></script>
+            <script th:src="${@urls.baseUrl} + 'js/jquery.magnific-popup.min.js'"></script>
+            <script th:src="${@urls.baseUrl} + 'js/bootstrap.min.js'"></script>
+            <script th:src="${@urls.baseUrl} + 'js/ptumblr.js'"></script>
+        </div>
+    </body>
+</html>

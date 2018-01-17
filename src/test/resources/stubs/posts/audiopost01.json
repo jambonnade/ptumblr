@@ -1,0 +1,74 @@
+{
+  "type": "audio",
+  "blog_name": "derekg",
+  "id": 5578378101,
+  "post_url": "http://derekg.org/post/5578378101/otis-redding-never-fails-me",
+  "slug": "otis-redding-never-fails-me",
+  "date": "2011-05-17 16:21:05 GMT",
+  "timestamp": 1305649265,
+  "state": "published",
+  "format": "html",
+  "reblog_key": "Wa65rR5l",
+  "tags": [],
+  "short_url": "https://tmblr.co/Zj4UUy5CVqjr",
+  "summary": "Otis Redding never fails me. ",
+  "recommended_source": null,
+  "recommended_color": null,
+  "note_count": 22,
+  "source_url": "http://soundcloud.com/mariam-cabal/otis-redding-cigarettes-and-coffee",
+  "source_title": "SoundCloud / Mariam Caballero",
+  "track_name": "Otis Redding - Cigarettes And Coffee",
+  "caption": "<p>Otis Redding never fails me. </p>",
+  "reblog": {
+    "comment": "<p>Otis Redding never fails me. </p>",
+    "tree_html": ""
+  },
+  "trail": [
+    {
+      "blog": {
+        "name": "derekg",
+        "active": true,
+        "theme": {
+          "avatar_shape": "hidden",
+          "background_color": "#EEEEEE",
+          "body_font": "Helvetica Neue",
+          "header_bounds": 0,
+          "header_image": "https://static.tumblr.com/7ad5105f4d232878633bd0e191639a66/hriofhd/5krn2yj3v/tumblr_static_tumblr_static_header.png",
+          "header_image_focused": "https://static.tumblr.com/7ad5105f4d232878633bd0e191639a66/hriofhd/5krn2yj3v/tumblr_static_tumblr_static_header.png",
+          "header_image_scaled": "https://static.tumblr.com/7ad5105f4d232878633bd0e191639a66/hriofhd/5krn2yj3v/tumblr_static_tumblr_static_header.png",
+          "header_stretch": true,
+          "link_color": "#000000",
+          "show_avatar": false,
+          "show_description": true,
+          "show_header_image": true,
+          "show_title": true,
+          "title_color": "#11261c",
+          "title_font": "Sofia Pro",
+          "title_font_weight": "bold"
+        },
+        "share_likes": false,
+        "share_following": false,
+        "can_be_followed": true
+      },
+      "post": {
+        "id": "5578378101"
+      },
+      "content_raw": "<p>Otis Redding never fails me. </p>",
+      "content": "<p>Otis Redding never fails me.&nbsp;</p>",
+      "is_current_item": true,
+      "is_root_item": true
+    }
+  ],
+  "player": "<iframe src=\"https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F899921&amp;visual=true&amp;liking=false&amp;sharing=false&amp;auto_play=false&amp;show_comments=false&amp;continuous_play=false&amp;origin=tumblr\" frameborder=\"0\" allowtransparency=\"true\" class=\"soundcloud_audio_player\" width=\"500\" height=\"500\"></iframe>",
+  "embed": "<iframe src=\"https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F899921&amp;visual=true&amp;liking=false&amp;sharing=false&amp;auto_play=false&amp;show_comments=false&amp;continuous_play=false&amp;origin=tumblr\" frameborder=\"0\" allowtransparency=\"true\" class=\"soundcloud_audio_player\" width=\"540\" height=\"540\"></iframe>",
+  "plays": 0,
+  "audio_url": "https://api.soundcloud.com/tracks/899921/stream?client_id=N2eHz8D7GtXSl6fTtcGHdSJiS74xqOUI",
+  "audio_source_url": "http://soundcloud.com/mariam-cabal/otis-redding-cigarettes-and-coffee",
+  "is_external": true,
+  "audio_type": "soundcloud",
+  "can_like": false,
+  "can_reblog": true,
+  "can_send_in_message": true,
+  "can_reply": false,
+  "display_avatar": true
+}

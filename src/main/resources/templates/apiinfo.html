@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="page-fragments :: head(#{web.apiInfo.pageTitle})"></head>
+    <body>
+        <div th:replace="page-fragments :: header('apiinfo')"></div>
+        <div class="container" role="main">            
+            <div class="jumbotron">
+                <p th:text="#{web.apiInfo.message}">(api message)</p>
+
+                <div class="panel panel-primary" th:if="${apiRatelimit}" th:with="df=#{web.apiInfo.limit.dateFmt}">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" th:text="#{web.apiInfo.limit.title}">(api limit title)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p th:unless="${apiRatelimit.isPerHourResetPassed()}" th:text="#{web.apiInfo.limit.hourlyRemaining(${apiRatelimit.perHourRemaining}, ${#dates.format(apiRatelimit.perHourResetDate, df)})}"></p>
+                        <p th:unless="${apiRatelimit.isPerDayResetPassed()}" th:text="#{web.apiInfo.limit.dailyRemaining(${apiRatelimit.perDayRemaining}, ${#dates.format(apiRatelimit.perDayResetDate, df)})}"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div th:replace="page-fragments :: footer"></div>
+    </body>
+</html>

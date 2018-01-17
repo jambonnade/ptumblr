@@ -1,0 +1,42 @@
+{
+  "type": "chat",
+  "blog_name": "david",
+  "id": 158720631860,
+  "post_url": "https://www.davidslog.com/158720631860/me-i-like-that-band-europe-ali-can-you-name",
+  "slug": "me-i-like-that-band-europe-ali-can-you-name",
+  "date": "2017-03-22 23:49:39 GMT",
+  "timestamp": 1490226579,
+  "state": "published",
+  "format": "html",
+  "reblog_key": "5nizTWf5",
+  "tags": [],
+  "short_url": "https://tmblr.co/Zx4yby2JqVAGq",
+  "summary": "Me: I like that band, Europe.\nAli: Can you name one Europe song that isn't Final Countdown?\nMe: ...",
+  "recommended_source": null,
+  "recommended_color": null,
+  "note_count": 205,
+  "title": null,
+  "body": "Me: I like that band, Europe.\nAli: Can you name one Europe song that isn't Final Countdown?\nMe: ...",
+  "dialogue": [
+    {
+      "name": "Me",
+      "label": "Me:",
+      "phrase": "I like that band, Europe."
+    },
+    {
+      "name": "Ali",
+      "label": "Ali:",
+      "phrase": "Can you name one Europe song that isn't Final Countdown?"
+    },
+    {
+      "name": "Me",
+      "label": "Me:",
+      "phrase": "..."
+    }
+  ],
+  "can_like": false,
+  "can_reblog": true,
+  "can_send_in_message": true,
+  "can_reply": false,
+  "display_avatar": true
+}

@@ -1,0 +1,4 @@
+[mysqld]
+#general_log=ON
+character_set_server=utf8mb4
+

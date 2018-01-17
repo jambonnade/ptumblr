@@ -1,0 +1,9 @@
+/nbproject/
+/target/
+/trace.db/
+/ptumblr-var/
+/nbactions-gruik-dev.xml
+
+/docker/prod-stack/application.properties
+/docker/prod-stack/mysql-var/
+/docker/prod-stack/ptumblr-var/

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="page-fragments :: head(#{web.dashboard.pageTitle})"></head>
+    <body>
+        <div th:replace="page-fragments :: header('dashboard')"></div>
+        
+        <div class="container dashboard" role="main">
+            <div th:replace="page-fragments :: alerts">(alerts)</div>
+
+            <nav aria-label="Pager" th:fragment="pager" th:assert="${postPage} and ${user}">
+                <ul class="pager">
+                    <li class="previous" th:if="${postPage.newerPageTopPost}">
+                        <a th:href="${@urls.getDashboardBottomPostUrl(postPage.newerPageTopPost)}">
+                            <span aria-hidden="true">&uarr;</span> <span th:text="#{web.dashboard.pager.newerPageBtn}">(newer posts)</span>
+                        </a>
+                    </li>
+                    <li class="previous" th:if="${user.topmostViewedPostId} and ${user.topmostViewedPostId != postPage.topPostId}">
+                        <a th:href="${@urls.getDashboardUrl(user.topmostViewedPostId)}">
+                            <span aria-hidden="true">&uarr;&uarr;</span> <span th:text="#{web.dashboard.pager.topmostPostBtn}">(top posts)</span>
+                        </a>
+                    </li>
+
+                    <li th:class="${canUseApi} ? '' : 'disabled'" th:unless="${postPage.newerPageTopPost}">
+                        <a th:href="${@urls.getDashboardFetchNewUrl()}" th:text="#{web.dashboard.pager.fetchPostsBtn}">(fetch posts)</a>
+                    </li>
+                    <li th:class="${canUseApi} ? '' : 'disabled'">
+                        <a th:href="${@urls.getDashboardResetUrl()}" th:text="#{web.dashboard.pager.resetPostsBtn}">(reset posts)</a>
+                    </li>
+
+
+                    <li class="next" th:if="${postPage.olderPageTopPost}">
+                        <a th:href="${@urls.getDashboardUrl(postPage.olderPageTopPost)}">
+                            <span th:text="#{web.dashboard.pager.olderPageBtn}">(older posts)</span> <span aria-hidden="true">&darr;</span>
+                        </a>
+                    </li>
+                    <li class="next disabled" th:unless="${postPage.olderPageTopPost}">
+                        <a href="#">
+                            <span th:text="#{web.dashboard.pager.olderPageBtn}">(older posts)</span> <span aria-hidden="true">&darr;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        
+
+            <div class="well" th:if="${#lists.isEmpty(postPage.posts)}">
+                <p th:text="#{web.dashboard.emptyPage}"></p>
+                <p th:utext="#{web.dashboard.emptyPageClickFetch(${#strings.escapeXml(@urls.getDashboardFetchNewUrl())})}"></p>
+            </div>
+            <th:block th:each="p,postIter : ${postPage.posts}">
+            <div th:if="${postIter.last}" id="bottom-post"></div>
+            <div class="post panel panel-default">
+                <div class="panel-heading" th:with="df=#{web.dashboard.post.headDateFmt}">
+                    <span class="label label-primary" th:text="#{'web.dashboard.post.type.' + ${p.class.simpleName}}" th:title="${p.tumblrId}">(blog type)</span>
+                    <span th:unless="${p.rebloggedFromName}" th:utext="#{web.dashboard.post.headBlogged(${p.blogName}, ${#dates.format(p.postDate, df)})}">(head)</span>
+                    <span th:if="${p.rebloggedFromName}" th:utext="#{web.dashboard.post.headReblogged(${p.blogName}, ${#dates.format(p.postDate, df)}, ${p.rebloggedFromName})}">(head)</span>
+                    
+                    <a th:href="${p.postUrl}" target="_blank" class="pull-right" th:title="#{web.dashboard.post.headLinkTitle}">
+                        <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="panel-body" th:switch="${p.class.simpleName}">
+                    <th:block th:case="PhotoPost" th:with="webImgWith=${T(de.jambonna.ptumblr.domain.PostPhoto).WEB_SIZE}">
+                        <div class="caption" th:if="${p.caption}" th:utext="${p.caption}">(caption)</div>
+                        <div class="row">
+                            <div class="col-md-6" th:each="img,imgIter : ${p.photos}">
+                                <a th:href="${img.origUrl}" class="thumbnail image-link" th:with="imgAlt=#{web.dashboard.post.photoAlt(${imgIter.count})}">
+                                    <img th:src="${img.webUrl} ?: ${img.origUrl}" 
+                                            th:width="${img.webUrl} ? ${webImgWith} : ${img.origWidth}"
+                                            th:height="${img.webUrl} ? ${img.webHeight} : ${img.origHeight}"
+                                            th:alt="${imgAlt}" th:title="${imgAlt}" />
+                                </a>
+                            </div>
+                        </div>
+                    </th:block>
+                    <th:block th:case="VideoPost" th:with="video=${p.getLargestPlayer(500)}" th:utext="${video.alteredEmbedCode}">
+                        (player code)
+                    </th:block>
+                    <th:block th:case="TextPost">
+                        <p th:if="${p.title}"><strong th:text="${p.title}">(title)</strong></p>
+                        <div th:utext="${p.body}">(body)</div>
+                    </th:block>
+                    <th:block th:case="*">
+                        <p th:utext="#{web.dashboard.post.unsupportedType(${#strings.escapeXml(p.postUrl)})}">(unsupported post)</p>
+                    </th:block>
+                </div>
+                <div class="panel-footer">
+                    &nbsp;
+                    <div class="btn-group pull-right btn-group-xs" role="group" aria-label="group">
+                        <button type="button" th:class="'btn btn-default' + (${p.liked} ? ' active ' : '')" th:readonly="not ${canUseApi}" th:title="#{web.dashboard.post.likeBtnTitle}" th:attr="data-url=${@urls.getLikePostUrl(p)}">
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default" th:readonly="not ${canUseApi}" th:title="#{web.dashboard.post.reblogBtnTitle}" th:attr="data-url=${@urls.getReblogPostUrl(p)}">
+                            <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </th:block>
+
+
+            <div th:replace="::pager"></div>
+        </div>
+        
+        <div th:replace="page-fragments :: footer"></div>
+    </body>
+</html>
