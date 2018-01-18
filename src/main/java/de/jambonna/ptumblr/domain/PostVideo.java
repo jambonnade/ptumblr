@@ -1,7 +1,6 @@
 package de.jambonna.ptumblr.domain;
 
 import com.tumblr.jumblr.types.Video;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,9 +13,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-/**
- *
- */
+
 @Entity
 public class PostVideo {
     @Id

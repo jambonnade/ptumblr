@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 /**
- *
+ * Base request entity. Holds information about an API call
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

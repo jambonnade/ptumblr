@@ -1,13 +1,10 @@
 package de.jambonna.ptumblr.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- */
+
 @Entity
 public class AudioPost extends Post {
     @Lob

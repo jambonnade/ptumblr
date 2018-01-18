@@ -6,12 +6,11 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import org.springframework.web.util.UriComponentsBuilder;
 
 /**
- *
+ * Url building utility
  */
 @Component
 public class UrlBuilder {
     private final String baseUrl;
-//    private final Object[] nullArg = { null };
     
 
     public UrlBuilder(@Value("${app.baseUrl}") String baseUrl) {
@@ -25,21 +24,7 @@ public class UrlBuilder {
         return baseUrl;
     }
         
-    
-//    public UriComponentsBuilder fromMethodName(Class<?> controllerType, String methodName, Object... args) {
-//        return fromController(controllerType).withM
-//        if (baseUrl.length() != 0) {
-//            UriComponentsBuilder baseUrlB = UriComponentsBuilder.fromHttpUrl(baseUrl);
-//            return MvcUriComponentsBuilder.fromMethodName(baseUrlB, controllerType, methodName, args);
-//        } else {
-//            return MvcUriComponentsBuilder.fromMethodName(controllerType, methodName, args);
-//        }        
-//    }
-//    
-//    public UriComponentsBuilder fromMethodNameNullArg(Class<?> controllerType, String methodName) {
-//        return fromMethodName(controllerType, methodName, nullArg);
-//    }
-    
+        
     public UriComponentsBuilder fromController(Class<?> controllerType) {
         if (baseUrl.length() != 0) {
             UriComponentsBuilder baseUrlB = UriComponentsBuilder.fromHttpUrl(baseUrl);

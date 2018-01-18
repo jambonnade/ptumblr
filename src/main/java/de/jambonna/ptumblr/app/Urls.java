@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
 /**
- *
+ * To get all required urls in the app
  */
 @Component
 public class Urls {

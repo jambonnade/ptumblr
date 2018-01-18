@@ -4,7 +4,7 @@ import com.tumblr.jumblr.JumblrClientEx;
 import javax.persistence.Entity;
 
 /**
- *
+ * Request to get information on the linked User
  */
 @Entity
 public class UserInfoRequest extends Request {

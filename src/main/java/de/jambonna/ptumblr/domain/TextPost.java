@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- */
+
 @Entity
 public class TextPost extends Post {
     @Column(length = 1000)

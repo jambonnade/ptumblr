@@ -4,7 +4,7 @@ import de.jambonna.ptumblr.domain.Request;
 
 
 /**
- *
+ * Persistence operations relative to Request entities
  */
 public interface RequestDao {
     public Request findLastRequest();

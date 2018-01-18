@@ -16,9 +16,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- */
+
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -104,21 +102,6 @@ public class UserDaoImpl implements UserDao {
     }
 
     
-//    public List<Post> getPostsByTumblrId(User user, List<Long> tumblrIds) {
-//        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-//        
-//        CriteriaQuery<Post> cq = cb.createQuery(Post.class);
-//        Root<Post> root = cq.from(Post.class);
-//        cq.select(root);
-//        cq.where(cb.equal(root.get(Post_.user), user));                
-//        cq.where(root.get(Post_.tumblrId).in(tumblrIds));                
-//        TypedQuery<Post> q = getEntityManager().createQuery(cq);
-//        List<Post> results = q.getResultList();
-//        
-//        return results;
-//    }
-    
-
     @Override
     public void savePosts(List<Post> posts) {
         for (Post p: posts) {
@@ -126,10 +109,6 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-//    @Override
-//    public void savePost(Post post) {
-//        getEntityManager().persist(post);
-//    }
 
     @Override
     public void clearPosts(User user) {

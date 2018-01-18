@@ -1,14 +1,11 @@
 package de.jambonna.ptumblr.domain;
 
-import com.tumblr.jumblr.JumblrClient;
 import com.tumblr.jumblr.JumblrClientEx;
-import java.util.HashMap;
-import java.util.Map;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 /**
- *
+ * Request for "reblog" action
  */
 @Entity
 public class PostReblogRequest extends Request {

@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 /**
- *
+ * Request for "like" action
  */
 @Entity
 public class PostLikeRequest extends Request {

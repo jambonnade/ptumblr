@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * A page of Posts. Holds information needed for navigation
  */
 public class PostPage {
     private Long requestedTopPostId;

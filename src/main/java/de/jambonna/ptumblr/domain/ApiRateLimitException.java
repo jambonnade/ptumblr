@@ -1,8 +1,6 @@
 package de.jambonna.ptumblr.domain;
 
-/**
- *
- */
+
 public class ApiRateLimitException extends Exception {
     private final ApiRatelimit rateLimit;
     

@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.persistence.Entity;
 
 /**
- *
+ * Request for fetching new posts in the dashboard
  */
 @Entity
 public class UserDashboardRequest extends Request {

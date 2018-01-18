@@ -1,8 +1,6 @@
 package de.jambonna.ptumblr.domain;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +16,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 /**
- *
+ * A post item from a user dashboard.
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -40,8 +38,6 @@ public abstract class Post {
     @NotNull
     private Long tumblrId;
     
-//    private Long nextTumblrId;
-
     @NotNull 
     private String blogName;
     
@@ -51,10 +47,7 @@ public abstract class Post {
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private Date postDate;
-    
-//    @Enumerated(EnumType.STRING)
-//    private Format format;
-    
+        
     private String reblogKey;
     
     private Long rebloggedFromId;
@@ -63,21 +56,6 @@ public abstract class Post {
     
     private Boolean liked;
     
-
-//    public static enum Format {
-//        HTML("html"),
-//        MARKDOWN("markdown");
-//        
-//        private final String apiValue;
-//        
-//        Format(String tumblrValue) {
-//            this.apiValue = tumblrValue;
-//        }
-//
-//        public String getApiValue() {
-//            return apiValue;
-//        }
-//    }
 
     public Long getPostId() {
         return postId;
@@ -111,14 +89,7 @@ public abstract class Post {
         this.tumblrId = tumblrId;
     }
 
-//    public Long getNextTumblrId() {
-//        return nextTumblrId;
-//    }
-//
-//    public void setNextTumblrId(Long nextTumblrId) {
-//        this.nextTumblrId = nextTumblrId;
-//    }
-//
+
     public String getBlogName() {
         return blogName;
     }

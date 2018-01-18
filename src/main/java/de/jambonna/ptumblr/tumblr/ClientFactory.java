@@ -9,7 +9,7 @@ import org.springframework.social.oauth1.OAuth1Version;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * Factory to create a tumblr client
  */
 @Component
 public class ClientFactory {

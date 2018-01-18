@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
 /**
- *
+ * Holds API rate limit information given by API response headers
  */
 @Embeddable
 public class ApiRatelimit {

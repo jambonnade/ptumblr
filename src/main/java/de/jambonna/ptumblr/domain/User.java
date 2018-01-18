@@ -10,8 +10,9 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import org.springframework.social.oauth1.OAuthToken;
 
+
 /**
- *
+ * The User entity
  */
 @Entity
 public class User {

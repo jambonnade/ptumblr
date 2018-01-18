@@ -10,9 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- */
+
 @Entity
 public class PostPhoto {
     public static int WEB_SIZE = 540;

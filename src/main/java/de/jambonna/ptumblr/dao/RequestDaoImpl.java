@@ -11,9 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- */
+
 @Repository
 public class RequestDaoImpl implements RequestDao {
     

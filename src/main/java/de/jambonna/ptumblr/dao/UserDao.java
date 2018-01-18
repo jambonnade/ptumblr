@@ -5,7 +5,7 @@ import de.jambonna.ptumblr.domain.User;
 import java.util.List;
 
 /**
- *
+ * Persistence operations relative to User entities and Post entites linked to it
  */
 public interface UserDao {
     public User findUserById(Long id);

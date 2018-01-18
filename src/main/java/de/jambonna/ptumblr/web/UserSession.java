@@ -4,7 +4,7 @@ import java.io.Serializable;
 import org.springframework.social.oauth1.OAuthToken;
 
 /**
- *
+ * The main user session object stored in session
  */
 public class UserSession implements Serializable {
     private static long serialVersionUID = 1L;
